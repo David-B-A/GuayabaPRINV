@@ -12,11 +12,11 @@
         "inView": false
     },
     {
-        "name": "process",
-        "dbType": "biginteger:unsigned:default,0:foreign,processes,id",
+        "name": "process_template",
+        "dbType": "biginteger:unsigned:default,0:foreign,process_templates,id",
         "htmlType": "text",
         "searchable": true,
-        "relation": "mt1,Process,process,id"
+        "relation": "mt1,Process,process_template,id"
     },
     {
         "name": "comments",
