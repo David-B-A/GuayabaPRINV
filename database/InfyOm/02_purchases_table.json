@@ -63,13 +63,6 @@
         "searchable": true
     },
     {
-        "name": "status",
-        "dbType": "string",
-        "htmlType": "select,Pendiente,En transporte,Recibido - pago sin confirmar,Recibido - pago confirmado",
-        "validations": "required",
-        "searchable": true
-    },
-    {
         "name": "created_at",
         "dbType": "timestamp",
         "htmlType": "",
