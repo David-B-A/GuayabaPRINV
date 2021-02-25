@@ -1,0 +1,73 @@
+[
+    {
+        "name": "id",
+        "dbType": "increments",
+        "htmlType": "",
+        "validations": "",
+        "searchable": true,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "user",
+        "dbType": "biginteger:unsigned:default,0:foreign,users,id",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "relation": "mt1,User,user,id"
+    },
+    {
+        "name": "supplier",
+        "dbType": "biginteger:unsigned:default,0:foreign,users,id",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "relation": "mt1,User,customer,id"
+    },
+    {
+        "name": "cash",
+        "dbType": "float",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true
+    },
+    {
+        "name": "credit",
+        "dbType": "float",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true
+    },
+    {
+        "name": "status",
+        "dbType": "string",
+        "htmlType": "select,Pendiente,En transporte,Recibido - pago sin confirmar,Recibido - pago confirmado",
+        "validations": "required",
+        "searchable": true
+    },
+    {
+        "name": "created_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": true,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "updated_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": true,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    }
+]

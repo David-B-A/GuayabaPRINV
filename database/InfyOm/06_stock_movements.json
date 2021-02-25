@@ -1,0 +1,72 @@
+[
+    {
+        "name": "id",
+        "dbType": "increments",
+        "htmlType": "",
+        "validations": "",
+        "searchable": true,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "product",
+        "dbType": "biginteger:unsigned:default,0:foreign,products,id",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "relation": "mt1,Product,product,id"
+    },
+    {
+        "name": "sale",
+        "dbType": "biginteger:unsigned:default,0:foreign,sales,id",
+        "htmlType": "text",
+        "searchable": true,
+        "relation": "mt1,Sale,sale,id"
+    },
+    {
+        "name": "purchase",
+        "dbType": "biginteger:unsigned:default,0:purchases,sales,id",
+        "htmlType": "text",
+        "searchable": true,
+        "relation": "mt1,Purchase,purchase,id"
+    },
+    {
+        "name": "process",
+        "dbType": "biginteger:unsigned:default,0:processes,sales,id",
+        "htmlType": "text",
+        "searchable": true,
+        "relation": "mt1,Process,process,id"
+    },
+    {
+        "name": "ammount",
+        "dbType": "integer",
+        "htmlType": "text",
+        "searchable": true,
+        "validations": "required"
+    },
+    {
+        "name": "created_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": true,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "name": "updated_at",
+        "dbType": "timestamp",
+        "htmlType": "",
+        "validations": "",
+        "searchable": true,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    }
+]
