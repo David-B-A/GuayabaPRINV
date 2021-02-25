@@ -40,10 +40,16 @@
         "searchable": true
     },
     {
-        "name": "store",
+        "name": "stock",
         "dbType": "integer",
         "htmlType": "number",
         "validations": "required",
+        "searchable": true
+    },
+    {
+        "name": "metadata",
+        "dbType": "json",
+        "htmlType": "text",
         "searchable": true
     },
     {
