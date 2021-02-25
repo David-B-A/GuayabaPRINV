@@ -28,6 +28,20 @@
         "relation": "mt1,User,customer,id"
     },
     {
+        "name": "products",
+        "dbType": "json",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true
+    },
+    {
+        "name": "total",
+        "dbType": "float",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true
+    },
+    {
         "name": "cash",
         "dbType": "float",
         "htmlType": "text",

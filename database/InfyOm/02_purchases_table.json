@@ -28,6 +28,20 @@
         "relation": "mt1,User,customer,id"
     },
     {
+        "name": "products",
+        "dbType": "json",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true
+    },
+    {
+        "name": "total",
+        "dbType": "float",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true
+    },
+    {
         "name": "cash",
         "dbType": "float",
         "htmlType": "text",
@@ -38,6 +52,13 @@
         "name": "credit",
         "dbType": "float",
         "htmlType": "text",
+        "validations": "required",
+        "searchable": true
+    },
+    {
+        "name": "status",
+        "dbType": "string",
+        "htmlType": "select,Pendiente,En transporte,Recibido - pago sin confirmar,Recibido - pago confirmado",
         "validations": "required",
         "searchable": true
     },
