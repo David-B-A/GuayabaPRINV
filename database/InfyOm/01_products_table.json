@@ -26,7 +26,7 @@
         "searchable": true
     },
     {
-        "name": "purchase_price",
+        "name": "input_price",
         "dbType": "float",
         "htmlType": "text",
         "validations": "required",
