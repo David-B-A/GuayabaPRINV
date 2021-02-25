@@ -28,14 +28,14 @@
     },
     {
         "name": "purchase",
-        "dbType": "biginteger:unsigned:default,0:purchases,sales,id",
+        "dbType": "biginteger:unsigned:default,0:foreign,purchases,id",
         "htmlType": "text",
         "searchable": true,
         "relation": "mt1,Purchase,purchase,id"
     },
     {
         "name": "process",
-        "dbType": "biginteger:unsigned:default,0:processes,sales,id",
+        "dbType": "biginteger:unsigned:default,0:foreign,processes,id",
         "htmlType": "text",
         "searchable": true,
         "relation": "mt1,Process,process,id"
