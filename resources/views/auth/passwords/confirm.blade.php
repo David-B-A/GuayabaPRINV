@@ -34,12 +34,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
+    <img src="{{asset('img/GuayabaPRINV.jpg')}}"
+                         class="user-image elevation-2" alt="User Image">
         <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
     </div>
 
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Please confirm your password before continuing.</p>
+            <p class="login-box-msg">Por favor confirma tu contraseña antes de continuar.</p>
 
             <form method="POST" action="{{ route('password.confirm') }}">
                 @csrf
@@ -48,7 +50,7 @@
                     <input type="password"
                            name="password"
                            class="form-control @error('password') is-invalid @enderror"
-                           placeholder="Password"
+                           placeholder="Contraseña"
                            required autocomplete="current-password">
                     <div class="input-group-append">
                         <div class="input-group-text"><span class="fas fa-lock"></span></div>
@@ -61,14 +63,14 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">Confirm Password</button>
+                        <button type="submit" class="btn btn-primary btn-block">Confirmar Contraseña</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
             <p class="mt-3 mb-1">
-                <a href="{{ route('password.request') }}">Forgot Your Password?</a>
+                <a href="{{ route('password.request') }}">Olvidaste tu Contraseña?</a>
             </p>
         </div>
         <!-- /.login-card-body -->

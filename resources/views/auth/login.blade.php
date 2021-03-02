@@ -3,6 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
     <title>{{ config('app.name') }}</title>
 
     <!-- Tell the browser to be responsive to screen width -->
@@ -32,8 +33,10 @@
 
 </head>
 <body class="hold-transition login-page">
-<div class="login-box">
+<div class="login-box">  
     <div class="login-logo">
+    <img src="{{asset('img/GuayabaPRINV.jpg')}}"
+                         class="user-image elevation-2" alt="User Image"> 
         <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
     </div>
 
@@ -42,7 +45,7 @@
     <!-- /.login-box-body -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Ingreso</p>
 
             <form method="post" action="{{ url('/login') }}">
                 @csrf
@@ -64,7 +67,7 @@
                 <div class="input-group mb-3">
                     <input type="password"
                            name="password"
-                           placeholder="Password"
+                           placeholder="Contraseña"
                            class="form-control @error('password') is-invalid @enderror">
                     <div class="input-group-append">
                         <div class="input-group-text">
@@ -81,22 +84,22 @@
                     <div class="col-8">
                         <div class="icheck-primary">
                             <input type="checkbox" id="remember">
-                            <label for="remember">Remember Me</label>
+                            <label for="remember">Recordarme</label>
                         </div>
                     </div>
 
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-primary btn-block">Ingresar</button>
                     </div>
 
                 </div>
             </form>
 
             <p class="mb-1">
-                <a href="{{ route('password.request') }}">I forgot my password</a>
+                <a href="{{ route('password.request') }}">Olvidé mi contraseña</a>
             </p>
             <p class="mb-0">
-                <a href="{{ route('register') }}" class="text-center">Register a new membership</a>
+                <a href="{{ route('register') }}" class="text-center">Registrarme como cliente</a>
             </p>
         </div>
         <!-- /.login-card-body -->

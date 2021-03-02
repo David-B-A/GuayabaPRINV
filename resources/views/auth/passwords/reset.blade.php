@@ -34,6 +34,8 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
+    <img src="{{asset('img/GuayabaPRINV.jpg')}}"
+                         class="user-image elevation-2" alt="User Image">
         <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
     </div>
 
