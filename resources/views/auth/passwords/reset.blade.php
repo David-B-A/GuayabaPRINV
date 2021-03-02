@@ -41,7 +41,7 @@
 
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">You are only one step a way from your new password, recover your password now.</p>
+            <p class="login-box-msg">Estás a un paso de reestablecer tu contraseña.</p>
 
             <form action="{{ route('password.update') }}" method="POST">
                 @csrf
@@ -66,7 +66,7 @@
                     <input type="password"
                            name="password"
                            class="form-control @error('password') is-invalid @enderror"
-                           placeholder="Password">
+                           placeholder="Contraseña Nueva">
                     <div class="input-group-append">
                         <div class="input-group-text"><span class="fas fa-lock"></span></div>
                     </div>
@@ -79,7 +79,7 @@
                     <input type="password"
                            name="password_confirmation"
                            class="form-control"
-                           placeholder="Confirm Password">
+                           placeholder="Confirmar Contraseña Nueva">
                     <div class="input-group-append">
                         <div class="input-group-text"><span class="fas fa-lock"></span></div>
                     </div>
@@ -87,14 +87,14 @@
 
                 <div class="row">
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">Reset Password</button>
+                        <button type="submit" class="btn btn-primary btn-block">Reestablecer Contraseña</button>
                     </div>
                     <!-- /.col -->
                 </div>
             </form>
 
             <p class="mt-3 mb-1">
-                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('login') }}">Ingresar</a>
             </p>
         </div>
         <!-- /.login-card-body -->
