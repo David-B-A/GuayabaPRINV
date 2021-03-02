@@ -58,7 +58,14 @@
     {
         "name": "status",
         "dbType": "string",
-        "htmlType": "select,Pendiente,En transporte,Recibido - pago sin confirmar,Recibido - pago confirmado",
+        "htmlType": "select,Pendiente,En transporte,Recibido",
+        "validations": "required",
+        "searchable": true
+    },
+    {
+        "name": "payment_status",
+        "dbType": "string",
+        "htmlType": "select,Pendiente,Parcial,Pagado",
         "validations": "required",
         "searchable": true
     },
