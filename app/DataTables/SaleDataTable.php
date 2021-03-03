@@ -2,11 +2,11 @@
 
 namespace App\DataTables;
 
-use App\Models\Purchase;
+use App\Models\Sale;
 use Yajra\DataTables\Services\DataTable;
 use Yajra\DataTables\EloquentDataTable;
 
-class PurchaseDataTable extends DataTable
+class SaleDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -18,18 +18,18 @@ class PurchaseDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'purchases.datatables_actions');
+        return $dataTable->addColumn('action', 'sales.datatables_actions');
     }
 
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Models\Purchase $model
+     * @param \App\Models\Sale $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Purchase $model)
+    public function query(Sale $model)
     {
-        return $model->newQuery()->with('user_relation','supplier_relation');
+        return $model->newQuery()->with('user_relation','customer_relation');
     }
 
     /**
@@ -42,7 +42,7 @@ class PurchaseDataTable extends DataTable
         return $this->builder()
             ->columns($this->getColumns())
             ->minifiedAjax()
-            ->addAction(['title' => 'Acciones','width' => '120px', 'printable' => false])
+            ->addAction(['title' => 'Acciones', 'width' => '120px', 'printable' => false])
             ->parameters([
                 'dom'       => 'Bfrtip',
                 'stateSave' => true,
@@ -66,8 +66,8 @@ class PurchaseDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'user_relation' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user_relation.name', 'name' => 'user_relation.name']),
-            'supplier' => new \Yajra\DataTables\Html\Column(['title' => 'Proveedor', 'data' => 'supplier_relation.name', 'name' => 'supplier_relation.name']),
+            'user' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user_relation.name', 'name' => 'user_relation.name']),
+            'customer' => new \Yajra\DataTables\Html\Column(['title' => 'Cliente', 'data' => 'customer_relation.name', 'name' => 'customer_relation.name']),
             //'products' => new \Yajra\DataTables\Html\Column(['title' => 'Productos', 'data' => 'products', 'name' => 'products']),
             'total' => new \Yajra\DataTables\Html\Column(['title' => 'Total', 'data' => 'total', 'name' => 'total']),
             'cash' => new \Yajra\DataTables\Html\Column(['title' => 'Contado', 'data' => 'cash', 'name' => 'cash']),
@@ -84,6 +84,6 @@ class PurchaseDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'purchases_datatable_' . time();
+        return 'sales_datatable_' . time();
     }
 }

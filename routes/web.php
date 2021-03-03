@@ -29,3 +29,5 @@ Route::get('/home', [
 Route::resource('products', App\Http\Controllers\ProductController::class);
 
 Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
+
+Route::resource('sales', App\Http\Controllers\SaleController::class);
