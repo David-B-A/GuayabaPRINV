@@ -61,7 +61,7 @@ class PurchaseController extends AppBaseController
         $input["products"] = json_encode($input["products"]);
         $purchase = $this->purchaseRepository->create($input);
 
-        Flash::success('Purchase saved successfully.');
+        Flash::success('Compra guardada con éxito.');
 
         return redirect(route('purchases.index'));
     }
@@ -78,7 +78,7 @@ class PurchaseController extends AppBaseController
         $purchase = $this->purchaseRepository->find($id);
 
         if (empty($purchase)) {
-            Flash::error('Purchase not found');
+            Flash::error('Compra no encontrada');
 
             return redirect(route('purchases.index'));
         }
@@ -99,7 +99,7 @@ class PurchaseController extends AppBaseController
     {
         $purchase = $this->purchaseRepository->find($id);
         if (empty($purchase)) {
-            Flash::error('Purchase not found');
+            Flash::error('Compra no encontrada');
 
             return redirect(route('purchases.index'));
         }
@@ -123,7 +123,7 @@ class PurchaseController extends AppBaseController
         $purchase = $this->purchaseRepository->find($id);
 
         if (empty($purchase)) {
-            Flash::error('Purchase not found');
+            Flash::error('Compra no encontrada');
 
             return redirect(route('purchases.index'));
         }
@@ -131,7 +131,7 @@ class PurchaseController extends AppBaseController
         $input["products"] = json_encode($input["products"]);
         $purchase = $this->purchaseRepository->update($input, $id);
 
-        Flash::success('Purchase updated successfully.');
+        Flash::success('Compra actualizada con éxito.');
 
         return redirect(route('purchases.index'));
     }
@@ -148,14 +148,14 @@ class PurchaseController extends AppBaseController
         $purchase = $this->purchaseRepository->find($id);
 
         if (empty($purchase)) {
-            Flash::error('Purchase not found');
+            Flash::error('Compra no encontrada');
 
             return redirect(route('purchases.index'));
         }
 
         $this->purchaseRepository->delete($id);
 
-        Flash::success('Purchase deleted successfully.');
+        Flash::success('Compra eliminada con éxito.');
 
         return redirect(route('purchases.index'));
     }

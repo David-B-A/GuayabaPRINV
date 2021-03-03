@@ -48,6 +48,12 @@
         "validations": "required"
     },
     {
+        "name": "metadata",
+        "dbType": "json",
+        "htmlType": "text",
+        "searchable": true
+    },
+    {
         "name": "created_at",
         "dbType": "timestamp",
         "htmlType": "",

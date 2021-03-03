@@ -61,7 +61,7 @@ class SaleController extends AppBaseController
         $input["products"] = json_encode($input["products"]);
         $sale = $this->saleRepository->create($input);
 
-        Flash::success('Sale saved successfully.');
+        Flash::success('Venta guardada con éxito.');
 
         return redirect(route('sales.index'));
     }
@@ -78,7 +78,7 @@ class SaleController extends AppBaseController
         $sale = $this->saleRepository->find($id);
 
         if (empty($sale)) {
-            Flash::error('Sale not found');
+            Flash::error('Venta no encontrada');
 
             return redirect(route('sales.index'));
         }
@@ -100,7 +100,7 @@ class SaleController extends AppBaseController
         $sale = $this->saleRepository->find($id);
 
         if (empty($sale)) {
-            Flash::error('Sale not found');
+            Flash::error('Venta no encontrada');
 
             return redirect(route('sales.index'));
         }
@@ -124,7 +124,7 @@ class SaleController extends AppBaseController
         $sale = $this->saleRepository->find($id);
 
         if (empty($sale)) {
-            Flash::error('Sale not found');
+            Flash::error('Venta no encontrada');
 
             return redirect(route('sales.index'));
         }
@@ -132,7 +132,7 @@ class SaleController extends AppBaseController
         $input["products"] = json_encode($input["products"]);
         $sale = $this->saleRepository->update($input, $id);
 
-        Flash::success('Sale updated successfully.');
+        Flash::success('Venta actualizada con éxito.');
 
         return redirect(route('sales.index'));
     }
@@ -149,14 +149,14 @@ class SaleController extends AppBaseController
         $sale = $this->saleRepository->find($id);
 
         if (empty($sale)) {
-            Flash::error('Sale not found');
+            Flash::error('Venta no encontrada');
 
             return redirect(route('sales.index'));
         }
 
         $this->saleRepository->delete($id);
 
-        Flash::success('Sale deleted successfully.');
+        Flash::success('Venta eliminada con éxito.');
 
         return redirect(route('sales.index'));
     }
