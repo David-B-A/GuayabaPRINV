@@ -29,7 +29,7 @@ class PurchaseDataTable extends DataTable
      */
     public function query(Purchase $model)
     {
-        return $model->newQuery()->with('user','supplier');
+        return $model->newQuery()->with('user_relation','supplier_relation');
     }
 
     /**
@@ -66,8 +66,8 @@ class PurchaseDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'user' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user.name', 'name' => 'user.name']),
-            'supplier' => new \Yajra\DataTables\Html\Column(['title' => 'Proveedor', 'data' => 'supplier.name', 'name' => 'supplier.name']),
+            'user_relation' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user_relation.name', 'name' => 'user_relation.name']),
+            'supplier' => new \Yajra\DataTables\Html\Column(['title' => 'Proveedor', 'data' => 'supplier_relation.name', 'name' => 'supplier_relation.name']),
             //'products' => new \Yajra\DataTables\Html\Column(['title' => 'Productos', 'data' => 'products', 'name' => 'products']),
             'total' => new \Yajra\DataTables\Html\Column(['title' => 'Total', 'data' => 'total', 'name' => 'total']),
             'cash' => new \Yajra\DataTables\Html\Column(['title' => 'Contado', 'data' => 'cash', 'name' => 'cash']),
