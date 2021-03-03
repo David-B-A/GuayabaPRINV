@@ -15,7 +15,7 @@
     {!! Form::label('products', 'Productos:') !!}
     <ul>
     @foreach(json_decode($sale->products) as $product)
-        <li>{{$products[$product->producto]->name}}: {{$product->cantidad}} (Presentación: {{$product->presentacion_kg}} kg)</li>
+        <li>{{$products[$product->producto]->name}}: {{$product->cantidad}} (Presentación: {{$product->presentacion->kg}} kg)</li>
     @endforeach
     </ul>
 </div>
