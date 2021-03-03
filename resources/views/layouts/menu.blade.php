@@ -22,3 +22,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('processTemplates.index') }}"
+       class="nav-link {{ Request::is('processTemplates*') ? 'active' : '' }}">
+        <p>Procesos Estándar</p>
+    </a>
+</li>
+
+
