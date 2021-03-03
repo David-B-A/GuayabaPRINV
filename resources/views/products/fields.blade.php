@@ -30,35 +30,41 @@
 </div>
 
 <!-- Metadata Field -->
-
+@php
+$presentacion_kg = 40;
+$presentacion_costo = 0;
+$presentacion_precio_venta = 0;
+$descripcion = '';
+if(isset($product->metadata)){
+    if(isset(json_decode($product->metadata)->presentacion[0]->kg)){
+        $presentacion_kg = json_decode($product->metadata)->presentacion[0]->kg;
+    }
+    if(isset(json_decode($product->metadata)->presentacion[0]->costo)){
+        $presentacion_costo = json_decode($product->metadata)->presentacion[0]->costo;
+    }
+    if(isset(json_decode($product->metadata)->presentacion[0]->precio_venta)){
+        $presentacion_precio_venta = json_decode($product->metadata)->presentacion[0]->precio_venta;
+    }
+    if(isset(json_decode($product->metadata)->descripcion)){
+        $descripcion = json_decode($product->metadata)->descripcion;
+    }
+}
+@endphp
 <div class="form-group col-sm-6">
     {!! Form::label('metadata', 'Presentación (kg):') !!}
-    @php
-    $presentacion_kg = 40
-    @endphp
-    @if(isset($product->metadata))
-    @if(isset(json_decode($product->metadata)->presentacion_kg[0]))
-    @php
-    $presentacion_kg = json_decode($product->metadata)->presentacion_kg[0]
-    @endphp
-    @endif
-    @endif
-    {!! Form::number('metadata[presentacion_kg][0]', $presentacion_kg, ['class' => 'form-control', 'required' => TRUE, 'min' => 0]) !!}
-
+    {!! Form::number('metadata[presentacion][0][kg]', $presentacion_kg, ['class' => 'form-control', 'required' => TRUE, 'min' => 0]) !!}
+</div>
+<div class="form-group col-sm-6">
+    {!! Form::label('metadata', 'Presentación (costo):') !!}
+    {!! Form::number('metadata[presentacion][0][costo]', $presentacion_costo, ['class' => 'form-control', 'required' => TRUE, 'min' => 0]) !!}
+</div>
+<div class="form-group col-sm-6">
+    {!! Form::label('metadata', 'Presentación (precio venta):') !!}
+    {!! Form::number('metadata[presentacion][0][precio_venta]', $presentacion_precio_venta, ['class' => 'form-control', 'required' => TRUE, 'min' => 0]) !!}
 </div>
 
 <div class="form-group col-sm-6">
     {!! Form::label('metadata', 'Descripción:') !!}
-    @php
-    $descripcion = ''
-    @endphp
-    @if(isset($product->metadata))
-    @if(isset(json_decode($product->metadata)->descripcion))
-    @php
-    $descripcion = json_decode($product->metadata)->descripcion
-    @endphp
-    @endif
-    @endif
     {!! Form::text('metadata[descripcion]', $descripcion, ['class' => 'form-control', 'required' => TRUE]) !!}
 </div>
 

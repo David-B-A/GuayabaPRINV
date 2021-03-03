@@ -74,14 +74,16 @@
         var items = {!! isset($sale->products) ? $sale->products : '[]' !!};            
         var id_primero = 0;
         $(document).ready(function(){
-            items = items.length == 0 ? [{'producto':1,'presentacion_kg':'','cantidad':0}] : items;
+            items = items.length == 0 ? [{'producto':1,'presentacion':{'kg':''},'cantidad':0}] : items;
+            console.log(items);
+            
             render(items,products);
         });
         
         function add(idstr){
             items = parseItems();
             id=parseInt(idstr.substring(4));
-            items.splice(id+1, 0, {'producto':1,'presentacion_kg':'','cantidad':0});
+            items.splice(id+1, 0, {'producto':1,'presentacion':{'kg':''},'cantidad':0});
             console.log(items);
             render(items,products);      
         }
@@ -89,8 +91,7 @@
             items = parseItems();
             id=parseInt(idstr.substring(4));
             items.splice(id, 1);
-            items = items.length == 0 ? [{'producto':1,'presentacion_kg':'','cantidad':0}] : items;
-            console.log(items);
+            items = items.length == 0 ? [{'producto':1,'presentacion':{'kg':''},'cantidad':0}] : items;
             render(items,products);            
         }
         function parseItems(){
@@ -99,7 +100,7 @@
             ammounts = $('.ammount');
             items = []
             for(i=0;i<product_ids.length;i++){
-                items.push({'producto':product_ids[i].value,'presentacion_kg':presentations[i].value,'cantidad':ammounts[i].value});
+                items.push({'producto':product_ids[i].value,'presentacion':{'kg':presentations[i].value},'cantidad':ammounts[i].value});
             }
             return items;
         }
@@ -124,23 +125,29 @@
                             </select>
                         </td>
                         <td class="form-group">
-                            <select class="form-control presentation" id="products[${i}][presentacion_kg]" name="products[${i}][presentacion_kg]" value="${items[i].presentacion_kg}">
+                            <select class="form-control presentation" id="products[${i}][presentacion][kg]" name="products[${i}][presentacion][kg]" value="${items[i].presentacion.kg}">
                 `;
-                presentations = JSON.parse(products[items[i].producto].metadata).presentacion_kg;
+                presentations = JSON.parse(products[items[i].producto].metadata).presentacion;
+                cost = 0;
+                sale_price = 0;
                 for(p=0;p<presentations.length;p++){
-                    selected = items[i].presentacion_kg == presentations[p] ? 'selected' : '';
+                    selected = items[i].presentacion.kg == presentations[p].kg ? 'selected' : '';
+                    cost =  items[i].presentacion.kg == presentations[p].kg ? presentations[p].costo : 0;
+                    sale_price =  items[i].presentacion.kg == presentations[p].kg ? presentations[p].precio_venta : 0;
                     htmlstr += `
-                    <option ${selected} value="${presentations[p]}">${presentations[p]}</option>
+                    <option ${selected} value="${presentations[p].kg}">${presentations[p].kg}</option>
                     `;
                 }
-                temp = parseFloat(items[i].cantidad) * parseFloat(items[i].presentacion_kg) * parseFloat(products[items[i].producto].sale_price);
+                temp = parseFloat(items[i].cantidad) * sale_price;
                 temp = isNaN(temp) ? 0: temp;
                 total += temp;
                 htmlstr += `
                             </select>
+                            <input type="hidden" id="products[${i}][presentacion][costo]" name="products[${i}][presentacion][costo]" value="${cost}" min="0" required>
+                            <input type="hidden" id="products[${i}][presentacion][precio_venta]" name="products[${i}][presentacion][precio_venta]" value="${sale_price}" min="0" required>
                         </td>
                         <td class="form-group">
-                            <input type="number" class="form-control ammount" id="products[${i}][cantidad]" name="products[${i}][cantidad]" type="text" value="${items[i].cantidad}" min="0" required>
+                            <input type="number" class="form-control ammount" id="products[${i}][cantidad]" name="products[${i}][cantidad]" value="${items[i].cantidad}" min="0" required>
                         </td>
                         <td class="form-group">
                             $ ${new Number(temp).toLocaleString("es-CO")}
