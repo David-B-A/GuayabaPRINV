@@ -99,7 +99,7 @@ class ProductAPIController extends AppBaseController
         if (empty($product)) {
             return $this->sendError('Product not found');
         }
-
+        $input["metadata"] = json_encode($input["metadata"]);
         $product = $this->productRepository->update($input, $id);
 
         return $this->sendResponse($product->toArray(), 'Product updated successfully');

@@ -6,3 +6,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('purchases.index') }}"
+       class="nav-link {{ Request::is('purchases*') ? 'active' : '' }}">
+        <p>Compras</p>
+    </a>
+</li>
+
+
