@@ -74,7 +74,10 @@ class Process extends Model
         'user' => 'required',
         'responsible' => 'required',
         'status' => 'required',
-        'inputs' => 'required'
+        'inputs' => 'required',
+        'outputs' => 'required',
+        'metadata' => 'required',
+        'scheduled_date' => 'required',
     ];
 
     /**

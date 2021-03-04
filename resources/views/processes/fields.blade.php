@@ -52,7 +52,7 @@ if(isset($process->metadata)){
 <!-- Executed Date Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('executed_date', 'Fecha Ejecutada:') !!}
-    {!! Form::date('executed_date', isset($process) ? $process->scheduled_date : date('Y-m-d'), ['class' => 'form-control']) !!}
+    {!! Form::date('executed_date', null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Inputs Field -->

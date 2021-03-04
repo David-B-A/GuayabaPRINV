@@ -25,7 +25,7 @@ class CreateProcessesTable extends Migration
             $table->json('outputs');
             $table->json('metadata');
             $table->date('scheduled_date');
-            $table->date('executed_date');
+            $table->date('executed_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user')->references('id')->on('users');
