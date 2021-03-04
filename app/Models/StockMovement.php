@@ -63,7 +63,6 @@ class StockMovement extends Model
      * @var array
      */
     public static $rules = [
-        'user' => 'required',
         'product' => 'required',
         'ammount' => 'required',
     ];
@@ -73,7 +72,7 @@ class StockMovement extends Model
      **/
     public function product_relation()
     {
-        return $this->belongsTo(\App\Models\Products::class, 'product', 'id');
+        return $this->belongsTo(\App\Models\Product::class, 'product', 'id');
     }
 
     /**

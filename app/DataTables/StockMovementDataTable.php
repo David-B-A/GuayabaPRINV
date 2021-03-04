@@ -29,7 +29,7 @@ class StockMovementDataTable extends DataTable
      */
     public function query(StockMovement $model)
     {
-        return $model->newQuery()->with('product_relation','sale_relation','purchase_relation','process_relation');
+        return $model->newQuery()->with('product_relation');
     }
 
     /**

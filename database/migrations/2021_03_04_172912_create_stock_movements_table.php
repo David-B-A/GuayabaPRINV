@@ -15,12 +15,12 @@ class CreateStockMovementsTable extends Migration
     {
         Schema::create('stock_movements', function (Blueprint $table) {
             $table->id();
-            $table->biginteger('product')->unsigned()->default(0);
-            $table->biginteger('sale')->unsigned()->default(0);
-            $table->biginteger('purchase')->unsigned()->default(0);
-            $table->biginteger('process')->unsigned()->default(0);
+            $table->biginteger('product')->unsigned();
+            $table->biginteger('sale')->unsigned()->nullable();
+            $table->biginteger('purchase')->unsigned()->nullable();
+            $table->biginteger('process')->unsigned()->nullable();
             $table->double('ammount',15,2);
-            $table->json('metadata');
+            $table->json('metadata')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('product')->references('id')->on('products');
