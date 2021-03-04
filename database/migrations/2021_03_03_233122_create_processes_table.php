@@ -19,7 +19,7 @@ class CreateProcessesTable extends Migration
             $table->biginteger('user')->unsigned()->default(0);
             $table->biginteger('responsible')->unsigned()->default(0);
             $table->biginteger('process_template')->unsigned()->default(0);
-            $table->string('comments');
+            $table->string('comments')->nullable();
             $table->string('status');
             $table->json('inputs');
             $table->json('outputs');

@@ -73,7 +73,6 @@ class Process extends Model
     public static $rules = [
         'user' => 'required',
         'responsible' => 'required',
-        'comments' => 'required',
         'status' => 'required',
         'inputs' => 'required'
     ];
