@@ -35,3 +35,5 @@ Route::resource('sales', App\Http\Controllers\SaleController::class);
 Route::resource('processTemplates', App\Http\Controllers\ProcessTemplateController::class);
 
 Route::resource('processes', App\Http\Controllers\ProcessController::class);
+
+Route::get('stockMovements.index', 'App\Http\Controllers\StockMovementController@index')->name('stockMovements.index');

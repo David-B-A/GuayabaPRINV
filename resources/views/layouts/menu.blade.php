@@ -37,4 +37,11 @@
     </a>
 </li>
 
+<li class="nav-item">
+    <a href="{{ route('stockMovements.index') }}"
+       class="nav-link {{ Request::is('stockMovements*') ? 'active' : '' }}">
+        <p>Movimientos de inventario</p>
+    </a>
+</li>
+
 
