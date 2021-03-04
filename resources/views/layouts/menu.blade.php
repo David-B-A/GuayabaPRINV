@@ -25,7 +25,15 @@
 <li class="nav-item">
     <a href="{{ route('processTemplates.index') }}"
        class="nav-link {{ Request::is('processTemplates*') ? 'active' : '' }}">
-        <p>Procesos Estándar</p>
+        <p>Esquemas de Proceso</p>
+    </a>
+</li>
+
+
+<li class="nav-item">
+    <a href="{{ route('processes.index') }}"
+       class="nav-link {{ Request::is('processes*') ? 'active' : '' }}">
+        <p>Procesos</p>
     </a>
 </li>
 

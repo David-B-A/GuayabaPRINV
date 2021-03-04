@@ -17,7 +17,11 @@
         "htmlType": "text",
         "validations": "required",
         "searchable": true,
-        "relation": "mt1,User,user,id"
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "responsible",
@@ -25,59 +29,107 @@
         "htmlType": "text",
         "validations": "required",
         "searchable": true,
-        "relation": "mt1,User,responsible,id"
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "process_template",
         "dbType": "biginteger:unsigned:default,0:foreign,process_templates,id",
         "htmlType": "text",
+        "validations": "",
         "searchable": true,
-        "relation": "mt1,Process,process_template,id"
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "comments",
         "dbType": "string",
         "htmlType": "text",
         "validations": "required",
-        "searchable": true
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "status",
         "dbType": "string",
         "htmlType": "select,Pendiente,Realizado,Cancelado",
         "validations": "required",
-        "searchable": true
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "inputs",
         "dbType": "json",
         "htmlType": "text",
         "validations": "required",
-        "searchable": true
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "outputs",
         "dbType": "json",
         "htmlType": "text",
-        "searchable": true
+        "validations": "",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "metadata",
         "dbType": "json",
         "htmlType": "text",
-        "searchable": true
+        "validations": "",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "scheduled_date",
         "dbType": "json",
         "htmlType": "text",
-        "searchable": true
+        "validations": "",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "executed_date",
         "dbType": "json",
         "htmlType": "text",
-        "searchable": true
+        "validations": "",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
     },
     {
         "name": "created_at",
@@ -88,7 +140,8 @@
         "fillable": false,
         "primary": false,
         "inForm": false,
-        "inIndex": false
+        "inIndex": false,
+        "inView": true
     },
     {
         "name": "updated_at",
@@ -99,6 +152,19 @@
         "fillable": false,
         "primary": false,
         "inForm": false,
-        "inIndex": false
+        "inIndex": false,
+        "inView": true
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,User,user,id"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,User,responsible,id"
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Process,process_template,id"
     }
 ]

@@ -1,20 +1,38 @@
-<!-- Name Field -->
+<!-- User Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Nombre:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    {!! Form::label('user', 'Usuario:') !!}
+    {!! Form::select('user',[null => 'Seleccionar'] + $users, null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- Description Field -->
+<!-- Responsible Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('description', 'Descripción:') !!}
-    {!! Form::text('description', null, ['class' => 'form-control']) !!}
+    {!! Form::label('responsible', 'Responsable:') !!}
+    {!! Form::select('responsible', [null => 'Seleccionar'] + $responsibles, null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Process Template Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('process_template', 'Proceso Estándar:') !!}
+    {!! Form::select('process_template', [null => 'Seleccionar'] + $process_templates->pluck('name','id')->toarray(), null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Comments Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('comments', 'Comentarios:') !!}
+    {!! Form::text('comments', null, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Status Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('status', 'Estado:') !!}
+    {!! Form::select('status', ['Pendiente' => 'Pendiente', 'Realizado' => 'Realizado', 'Cancelado' => 'Cancelado'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 @php
 $data = '';
-if(isset($processTemplate->metadata)){
-    if(isset(json_decode($processTemplate->metadata)->data)){
-        $data = json_decode($processTemplate->metadata)->data;
+if(isset($process->metadata)){
+    if(isset(json_decode($process->metadata)->data)){
+        $data = json_decode($process->metadata)->data;
     }
 }
 @endphp
@@ -23,6 +41,18 @@ if(isset($processTemplate->metadata)){
 <div class="form-group col-sm-6">
     {!! Form::label('metadata[data]', 'Metadata:') !!}
     {!! Form::text('metadata[data]', $data, ['class' => 'form-control']) !!}
+</div>
+
+<!-- Scheduled Date Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('scheduled_date', 'Fecha Planeada:') !!}
+    {!! Form::date('scheduled_date', isset($process) ? $process->scheduled_date : date('Y-m-d'), ['class' => 'form-control']) !!}
+</div>
+
+<!-- Executed Date Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('executed_date', 'Fecha Ejecutada:') !!}
+    {!! Form::date('executed_date', isset($process) ? $process->scheduled_date : date('Y-m-d'), ['class' => 'form-control']) !!}
 </div>
 
 <!-- Inputs Field -->
@@ -56,15 +86,17 @@ if(isset($processTemplate->metadata)){
 @push('page_scripts')
     <script>
         var products = {!! json_encode($products->toarray()) !!};            
-        var inputs = {!! isset($processTemplate->inputs) ? $processTemplate->inputs : '[]' !!};            
+        var process_templates = {!! json_encode($process_templates->toarray()) !!};
+        var inputs = {!! isset($process->inputs) ? $process->inputs : '[]' !!};            
         var id_primero = 0;
         $(document).ready(function(){
             inputs = inputs.length == 0 ? [{'producto':1,'presentacion':{'kg':''},'cantidad':0}] : inputs;
-            console.log(inputs);
-            
             renderInputs(inputs,products);
         });
-        
+        $('#process_template').change(function(){
+            inputs = JSON.parse(process_templates[this.value].inputs);
+            renderInputs(inputs,products);
+        });
         function addInput(idstr){
             inputs = parseInputs();
             id=parseInt(idstr.substring(8));
@@ -202,12 +234,15 @@ if(isset($processTemplate->metadata)){
 @push('page_scripts')
     <script>
         var products = {!! json_encode($products->toarray()) !!};            
-        var outputs = {!! isset($processTemplate->outputs) ? $processTemplate->outputs : '[]' !!};            
+        var process_templates = {!! json_encode($process_templates->toarray()) !!};   
+        var outputs = {!! isset($process->outputs) ? $process->outputs : '[]' !!};
         var id_primero = 0;
         $(document).ready(function(){
             outputs = outputs.length == 0 ? [{'producto':1,'presentacion':{'kg':''},'cantidad':0}] : outputs;
-            console.log(outputs);
-            
+            renderOutputs(outputs,products);
+        });
+        $('#process_template').change(function(){
+            outputs = JSON.parse(process_templates[this.value].outputs);
             renderOutputs(outputs,products);
         });
         

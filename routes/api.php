@@ -26,3 +26,5 @@ Route::resource('purchases', App\Http\Controllers\API\PurchaseAPIController::cla
 Route::resource('sales', App\Http\Controllers\API\SaleAPIController::class);
 
 Route::resource('process_templates', App\Http\Controllers\API\ProcessTemplateAPIController::class);
+
+Route::resource('processes', App\Http\Controllers\API\ProcessAPIController::class);

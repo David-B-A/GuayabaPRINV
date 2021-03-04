@@ -33,3 +33,5 @@ Route::resource('purchases', App\Http\Controllers\PurchaseController::class);
 Route::resource('sales', App\Http\Controllers\SaleController::class);
 
 Route::resource('processTemplates', App\Http\Controllers\ProcessTemplateController::class);
+
+Route::resource('processes', App\Http\Controllers\ProcessController::class);
