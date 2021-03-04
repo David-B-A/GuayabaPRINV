@@ -31,13 +31,13 @@
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('status', 'Estado:') !!}
-    {!! Form::select('status', ['Pedido' => 'Pedido', 'En transporte' => 'En transporte', 'Entregado' => 'Entregado'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('status', ['Pedido' => 'Pedido', 'En transporte' => 'En transporte', 'Entregado' => 'Entregado', 'Devolucion' => 'Devolucion'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <!-- Payment Status Field -->
 <div class="form-group col-sm-12">
     {!! Form::label('payment_status', 'Estado de pago:') !!}
-    {!! Form::select('payment_status', ['Pendiente' => 'Pendiente', 'Parcial' => 'Parcial', 'Pagado' => 'Pagado'], null, ['class' => 'form-control custom-select']) !!}
+    {!! Form::select('payment_status', ['Pendiente' => 'Pendiente', 'Parcial' => 'Parcial', 'Pagado' => 'Pagado', 'Devolucion' => 'Devolucion'], null, ['class' => 'form-control custom-select']) !!}
 </div>
 
 <!-- Products Field -->
