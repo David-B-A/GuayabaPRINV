@@ -47,7 +47,6 @@ class ProcessController extends AppBaseController
         $products = Product::all();
         $products = $products->keyBy('id');
         $process_templates = ProcessTemplate::all();
-        $process_templates = ProcessTemplate::all();
         $process_templates = $process_templates->keyBy('id');
         return view('processes.create', compact('users', 'responsibles', 'products', 'process_templates'));
     }
@@ -67,6 +66,7 @@ class ProcessController extends AppBaseController
         $input["metadata"] = json_encode($input["metadata"]);
 
         $process = $this->processRepository->create($input);
+        StockMovementController::manageProcess($process, 'store');
 
         Flash::success('Proceso guardado con éxito.');
 
@@ -141,7 +141,10 @@ class ProcessController extends AppBaseController
         $input["outputs"] = json_encode($input["outputs"]);
         $input["metadata"] = json_encode($input["metadata"]);
 
+        $diff_json_status = $process->inputs != $input["inputs"] || $process->outputs != $input["outputs"] || $process->status != $input["status"];
+
         $process = $this->processRepository->update($input, $id);
+        StockMovementController::manageProcess($process, 'update', $diff_json_status);
 
         Flash::success('Proceso actualizado con éxito.');
 
@@ -164,6 +167,7 @@ class ProcessController extends AppBaseController
 
             return redirect(route('processes.index'));
         }
+        StockMovementController::manageProcess($process, 'delete');
 
         $this->processRepository->delete($id);
 

@@ -60,6 +60,7 @@ class SaleController extends AppBaseController
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
         $sale = $this->saleRepository->create($input);
+        StockMovementController::manageSale($sale, 'store');
 
         Flash::success('Venta guardada con éxito.');
 
@@ -130,7 +131,12 @@ class SaleController extends AppBaseController
         }
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
+
+        $diff_json_status = $sale->products != $input["products"] || $sale->status != $input["status"];
+
         $sale = $this->saleRepository->update($input, $id);
+
+        StockMovementController::manageSale($sale, 'update', $diff_json_status);
 
         Flash::success('Venta actualizada con éxito.');
 
@@ -153,6 +159,7 @@ class SaleController extends AppBaseController
 
             return redirect(route('sales.index'));
         }
+        StockMovementController::manageSale($sale, 'delete');
 
         $this->saleRepository->delete($id);
 

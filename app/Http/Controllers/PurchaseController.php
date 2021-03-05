@@ -60,6 +60,7 @@ class PurchaseController extends AppBaseController
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
         $purchase = $this->purchaseRepository->create($input);
+        StockMovementController::managePurchase($purchase, 'store');
 
         Flash::success('Compra guardada con éxito.');
 
@@ -129,7 +130,12 @@ class PurchaseController extends AppBaseController
         }
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
+
+        $diff_json_status = $purchase->products != $input["products"] || $purchase->status != $input["status"];
+
         $purchase = $this->purchaseRepository->update($input, $id);
+
+        StockMovementController::managePurchase($purchase, 'update', $diff_json_status);
 
         Flash::success('Compra actualizada con éxito.');
 
@@ -146,12 +152,14 @@ class PurchaseController extends AppBaseController
     public function destroy($id)
     {
         $purchase = $this->purchaseRepository->find($id);
-
+        
         if (empty($purchase)) {
             Flash::error('Compra no encontrada');
 
             return redirect(route('purchases.index'));
         }
+
+        StockMovementController::managePurchase($purchase, 'delete');
 
         $this->purchaseRepository->delete($id);
 
