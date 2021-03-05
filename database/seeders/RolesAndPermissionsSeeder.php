@@ -59,5 +59,29 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $role = Role::create(['name' => 'Admin']);
         $role->givePermissionTo(Permission::all());
+
+        $role = Role::create(['name' => 'Cliente']);
+
+        $role = Role::create(['name' => 'Conductor']);
+        $role->givePermissionTo('users.index');
+        $role->givePermissionTo('purchases.index');
+        $role->givePermissionTo('sales.index');
+
+        $role = Role::create(['name' => 'Responsable de producción']);
+        $role->givePermissionTo('processes.index');
+        $role->givePermissionTo('processes.show');
+        $role->givePermissionTo('processes.create');
+        $role->givePermissionTo('processes.update');
+        
+        $role = Role::create(['name' => 'Vendedor']);
+        $role->givePermissionTo('sales.index');
+        $role->givePermissionTo('sales.show');
+        $role->givePermissionTo('sales.create');
+
+        $role = Role::create(['name' => 'Responsable de insumos']);
+        $role->givePermissionTo('purchases.index');
+        $role->givePermissionTo('purchases.show');
+        $role->givePermissionTo('purchases.create');
+
     }
 }

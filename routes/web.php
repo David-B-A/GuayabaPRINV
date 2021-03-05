@@ -36,4 +36,12 @@ Route::resource('processTemplates', App\Http\Controllers\ProcessTemplateControll
 
 Route::resource('processes', App\Http\Controllers\ProcessController::class);
 
+Route::resource('users', App\Http\Controllers\UserController::class);
+
 Route::get('stockMovements.index', 'App\Http\Controllers\StockMovementController@index')->name('stockMovements.index');
+
+Route::get('customers.index', 'App\Http\Controllers\UserController@indexCustomers')->name('customers.index');
+Route::get('customers.create', 'App\Http\Controllers\UserController@create')->name('customers.create');
+Route::post('customers.store', 'App\Http\Controllers\UserController@storeCustomer')->name('customers.store');
+Route::get('customers.edit/{id}', 'App\Http\Controllers\UserController@edit')->name('customers.edit');
+Route::patch('customers.update/{id}', 'App\Http\Controllers\UserController@updateCustomer')->name('customers.update');
