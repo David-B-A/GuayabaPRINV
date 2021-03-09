@@ -67,7 +67,7 @@ class SaleDataTable extends DataTable
     {
         return [
             'id' => new \Yajra\DataTables\Html\Column(['title' => 'Id', 'data' => 'id', 'name' => 'id']),
-            'user' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user_relation.name', 'name' => 'user_relation.name']),
+            // 'user' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user_relation.name', 'name' => 'user_relation.name']),
             'customer' => new \Yajra\DataTables\Html\Column(['title' => 'Cliente', 'data' => 'customer_relation.name', 'name' => 'customer_relation.name']),
             //'products' => new \Yajra\DataTables\Html\Column(['title' => 'Productos', 'data' => 'products', 'name' => 'products']),
             'location' => new \Yajra\DataTables\Html\Column(['title' => 'Ubicación', 
@@ -82,8 +82,8 @@ class SaleDataTable extends DataTable
                     return this.customer_relation.location ? htmlstr : "";
                 }', 'name' => 'customer_relation.location']),
             'total' => new \Yajra\DataTables\Html\Column(['title' => 'Total', 'data' => 'total', 'name' => 'total']),
-            'cash' => new \Yajra\DataTables\Html\Column(['title' => 'Contado', 'data' => 'cash', 'name' => 'cash']),
-            'credit' => new \Yajra\DataTables\Html\Column(['title' => 'Crédito', 'data' => 'credit', 'name' => 'credit']),
+            // 'cash' => new \Yajra\DataTables\Html\Column(['title' => 'Contado', 'data' => 'cash', 'name' => 'cash']),
+            // 'credit' => new \Yajra\DataTables\Html\Column(['title' => 'Crédito', 'data' => 'credit', 'name' => 'credit']),
             'status' => new \Yajra\DataTables\Html\Column(['title' => 'Estado', 'data' => 'status', 'name' => 'status']),
             'payment_status' => new \Yajra\DataTables\Html\Column(['title' => 'Estado de pago', 'data' => 'payment_status', 'name' => 'payment_status']),
         ];

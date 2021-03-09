@@ -70,7 +70,7 @@ class ProcessTemplateDataTable extends DataTable
             'description' => new \Yajra\DataTables\Html\Column(['title' => 'Descripción', 'data' => 'description', 'name' => 'description']),
             //'inputs' => new \Yajra\DataTables\Html\Column(['title' => 'Entradas', 'data' => 'inputs', 'name' => 'inputs']),
             //'outputs' => new \Yajra\DataTables\Html\Column(['title' => 'Salidas', 'data' => 'outputs', 'name' => 'outputs']),
-            'metadata'
+            // 'metadata'
         ];
     }
 

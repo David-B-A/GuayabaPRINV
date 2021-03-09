@@ -69,13 +69,13 @@ class ProcessDataTable extends DataTable
             'template' => new \Yajra\DataTables\Html\Column(['title' => 'Tipo de proceso', 'data' => 'process_template_relation.name', 'name' => 'process_template_relation.name']),
             'status' => new \Yajra\DataTables\Html\Column(['title' => 'Estado', 'data' => 'status', 'name' => 'status']),
             'scheduled_date' => new \Yajra\DataTables\Html\Column(['title' => 'Fecha planeada', 'data' => 'scheduled_date', 'name' => 'scheduled_date']),
-            'execution_date' => new \Yajra\DataTables\Html\Column(['title' => 'Fecha de ejecución', 'data' => 'executed_date', 'name' => 'executed_date']),
-            'user' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user_relation.name', 'name' => 'user_relation.name']),
-            'responsible' => new \Yajra\DataTables\Html\Column(['title' => 'Responsable', 'data' => 'responsible_relation.name', 'name' => 'responsible_relation.name']),
-            'comments' => new \Yajra\DataTables\Html\Column(['title' => 'Comentarios', 'data' => 'comments', 'name' => 'comments']),
+            // 'executed_date' => new \Yajra\DataTables\Html\Column(['title' => 'Fecha de ejecución', 'data' => 'executed_date', 'name' => 'executed_date']),
+            // 'user' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user_relation.name', 'name' => 'user_relation.name']),
+            // 'responsible' => new \Yajra\DataTables\Html\Column(['title' => 'Responsable', 'data' => 'responsible_relation.name', 'name' => 'responsible_relation.name']),
+            // 'comments' => new \Yajra\DataTables\Html\Column(['title' => 'Comentarios', 'data' => 'comments', 'name' => 'comments']),
             //'inputs' => new \Yajra\DataTables\Html\Column(['title' => 'Entradas', 'data' => 'inputs', 'name' => 'inputs']),
             //'outputs' => new \Yajra\DataTables\Html\Column(['title' => 'Salidas', 'data' => 'outputs', 'name' => 'outputs']),
-            'metadata'
+            // 'metadata'
         ];
     }
 

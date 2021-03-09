@@ -68,7 +68,7 @@ class CustomerDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id' => new \Yajra\DataTables\Html\Column(['title' => 'Id', 'data' => 'id', 'name' => 'id']),
+            //'id' => new \Yajra\DataTables\Html\Column(['title' => 'Id', 'data' => 'id', 'name' => 'id']),
             'name' => new \Yajra\DataTables\Html\Column(['title' => 'Nombre', 'data' => 'name', 'name' => 'name']),
             'location' => new \Yajra\DataTables\Html\Column(['title' => 'Ubicación', 
                 'render' => 'function(){
@@ -81,10 +81,10 @@ class CustomerDataTable extends DataTable
                     htmlstr += \'</a>\';
                     return this.location ? htmlstr : "";
                 }', 'name' => 'location']),
-            'address' => new \Yajra\DataTables\Html\Column(['title' => 'Dirección', 'data' => 'address', 'name' => 'address']),
-            'city' => new \Yajra\DataTables\Html\Column(['title' => 'Ciudad', 'data' => 'city', 'name' => 'city']),
-            'phone' => new \Yajra\DataTables\Html\Column(['title' => 'Teléfono', 'data' => 'phone', 'name' => 'phone']),
-            'role' => new \Yajra\DataTables\Html\Column(['title' => 'Rol', 'data' => 'roles[0].name', 'name' => 'role']),
+            //'address' => new \Yajra\DataTables\Html\Column(['title' => 'Dirección', 'data' => 'address', 'name' => 'address']),
+            //'city' => new \Yajra\DataTables\Html\Column(['title' => 'Ciudad', 'data' => 'city', 'name' => 'city']),
+            //'phone' => new \Yajra\DataTables\Html\Column(['title' => 'Teléfono', 'data' => 'phone', 'name' => 'phone']),
+            //'role' => new \Yajra\DataTables\Html\Column(['title' => 'Rol', 'data' => 'roles[0].name', 'name' => 'role']),
             
             //'inputs' => new \Yajra\DataTables\Html\Column(['title' => 'Entradas', 'data' => 'inputs', 'name' => 'inputs']),
             //'outputs' => new \Yajra\DataTables\Html\Column(['title' => 'Salidas', 'data' => 'outputs', 'name' => 'outputs']),

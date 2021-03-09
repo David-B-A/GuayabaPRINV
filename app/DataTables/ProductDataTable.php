@@ -67,11 +67,10 @@ class ProductDataTable extends DataTable
     {
         return [
             'name' => new \Yajra\DataTables\Html\Column(['title' => 'Nombre', 'data' => 'name', 'name' => 'name']),
-            'type' => new \Yajra\DataTables\Html\Column(['title' => 'Tipo', 'data' => 'type', 'name' => 'type']),
-            'input_price' => new \Yajra\DataTables\Html\Column(['title' => 'Precio de compra / producción', 'data' => 'input_price', 'name' => 'input_price']),
-            'sale_price' => new \Yajra\DataTables\Html\Column(['title' => 'Precio de venta', 'data' => 'sale_price', 'name' => 'sale_price']),
+            // 'type' => new \Yajra\DataTables\Html\Column(['title' => 'Tipo', 'data' => 'type', 'name' => 'type']),
+            // 'input_price' => new \Yajra\DataTables\Html\Column(['title' => 'Precio de compra / producción', 'data' => 'input_price', 'name' => 'input_price']),
+            // 'sale_price' => new \Yajra\DataTables\Html\Column(['title' => 'Precio de venta', 'data' => 'sale_price', 'name' => 'sale_price']),
             'stock' => new \Yajra\DataTables\Html\Column(['title' => 'Inventario', 'data' => 'stock', 'name' => 'stock']),
-            'metadata'
         ];
     }
 
