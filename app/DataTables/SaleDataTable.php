@@ -69,6 +69,17 @@ class SaleDataTable extends DataTable
             'user' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user_relation.name', 'name' => 'user_relation.name']),
             'customer' => new \Yajra\DataTables\Html\Column(['title' => 'Cliente', 'data' => 'customer_relation.name', 'name' => 'customer_relation.name']),
             //'products' => new \Yajra\DataTables\Html\Column(['title' => 'Productos', 'data' => 'products', 'name' => 'products']),
+            'location' => new \Yajra\DataTables\Html\Column(['title' => 'Ubicación', 
+                'render' => 'function(){
+                    htmlstr =  \'<a class="btn btn-info btn-xs ml-2" href="https://www.waze.com/ul?ll=\'+this.customer.location+\'&navigate=yes&zoom=17" target="_blank">\'
+                    htmlstr += \'<i class="fab fa-waze"></i>\';
+                    htmlstr += \'</a>\';
+                    
+                    htmlstr +=  \'<a class="btn btn-primary btn-xs  ml-2" href="https://maps.google.com/maps?q=\'+this.customer.location+\'&z=17&hl=es" target="_blank">\'
+                    htmlstr += \'<i class="fab fa-google"></i>\';
+                    htmlstr += \'</a>\';
+                    return this.customer.location ? htmlstr : "";
+                }', 'name' => 'location']),
             'total' => new \Yajra\DataTables\Html\Column(['title' => 'Total', 'data' => 'total', 'name' => 'total']),
             'cash' => new \Yajra\DataTables\Html\Column(['title' => 'Contado', 'data' => 'cash', 'name' => 'cash']),
             'credit' => new \Yajra\DataTables\Html\Column(['title' => 'Crédito', 'data' => 'credit', 'name' => 'credit']),

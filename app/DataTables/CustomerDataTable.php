@@ -70,7 +70,17 @@ class CustomerDataTable extends DataTable
         return [
             'id' => new \Yajra\DataTables\Html\Column(['title' => 'Id', 'data' => 'id', 'name' => 'id']),
             'name' => new \Yajra\DataTables\Html\Column(['title' => 'Nombre', 'data' => 'name', 'name' => 'name']),
-            'location' => new \Yajra\DataTables\Html\Column(['title' => 'Ubicación', 'data' => 'location', 'name' => 'location']),
+            'location' => new \Yajra\DataTables\Html\Column(['title' => 'Ubicación', 
+                'render' => 'function(){
+                    htmlstr =  \'<a class="btn btn-info btn-xs ml-2" href="https://www.waze.com/ul?ll=\'+this.location+\'&navigate=yes&zoom=17" target="_blank">\'
+                    htmlstr += \'<i class="fab fa-waze"></i>\';
+                    htmlstr += \'</a>\';
+                    
+                    htmlstr +=  \'<a class="btn btn-primary btn-xs  ml-2" href="https://maps.google.com/maps?q=\'+this.location+\'&z=17&hl=es" target="_blank">\'
+                    htmlstr += \'<i class="fab fa-google"></i>\';
+                    htmlstr += \'</a>\';
+                    return this.location ? htmlstr : "";
+                }', 'name' => 'location']),
             'address' => new \Yajra\DataTables\Html\Column(['title' => 'Dirección', 'data' => 'address', 'name' => 'address']),
             'city' => new \Yajra\DataTables\Html\Column(['title' => 'Ciudad', 'data' => 'city', 'name' => 'city']),
             'phone' => new \Yajra\DataTables\Html\Column(['title' => 'Teléfono', 'data' => 'phone', 'name' => 'phone']),
