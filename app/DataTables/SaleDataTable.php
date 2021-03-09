@@ -66,6 +66,7 @@ class SaleDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'id' => new \Yajra\DataTables\Html\Column(['title' => 'Id', 'data' => 'id', 'name' => 'id']),
             'user' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'data' => 'user_relation.name', 'name' => 'user_relation.name']),
             'customer' => new \Yajra\DataTables\Html\Column(['title' => 'Cliente', 'data' => 'customer_relation.name', 'name' => 'customer_relation.name']),
             //'products' => new \Yajra\DataTables\Html\Column(['title' => 'Productos', 'data' => 'products', 'name' => 'products']),
@@ -79,7 +80,7 @@ class SaleDataTable extends DataTable
                     htmlstr += \'<i class="fab fa-google"></i>\';
                     htmlstr += \'</a>\';
                     return this.customer_relation.location ? htmlstr : "";
-                }', 'name' => 'location']),
+                }', 'name' => 'customer_relation.location']),
             'total' => new \Yajra\DataTables\Html\Column(['title' => 'Total', 'data' => 'total', 'name' => 'total']),
             'cash' => new \Yajra\DataTables\Html\Column(['title' => 'Contado', 'data' => 'cash', 'name' => 'cash']),
             'credit' => new \Yajra\DataTables\Html\Column(['title' => 'Crédito', 'data' => 'credit', 'name' => 'credit']),
