@@ -1,8 +1,8 @@
 <!-- User Field -->
-<div class="form-group col-sm-6">
+<!-- <div class="form-group col-sm-6">
     {!! Form::label('user', 'Usuario:') !!}
     {!! Form::select('user',[null => 'Seleccionar'] + $users, null, ['class' => 'form-control']) !!}
-</div>
+</div> -->
 
 <!-- Supplier Field -->
 <div class="form-group col-sm-6">
@@ -36,7 +36,7 @@
 
 
 <!-- Payment Status Field -->
-<div class="form-group col-sm-12">
+<div class="form-group col-sm-6">
     {!! Form::label('payment_status', 'Estado de Pago:') !!}
     {!! Form::select('payment_status', ['Pendiente' => 'Pendiente', 'Parcial' => 'Parcial', 'Pagado' => 'Pagado', 'Devolucion' => 'Devolucion'], null, ['class' => 'form-control custom-select']) !!}
 </div>

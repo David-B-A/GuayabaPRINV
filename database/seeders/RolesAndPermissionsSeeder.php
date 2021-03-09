@@ -61,6 +61,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $role->givePermissionTo(Permission::all());
 
         $role = Role::create(['name' => 'Cliente']);
+        $role = Role::create(['name' => 'Proveedor']);
 
         $role = Role::create(['name' => 'Conductor']);
         $role->givePermissionTo('users.index');

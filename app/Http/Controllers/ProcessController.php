@@ -13,6 +13,7 @@ use Response;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\ProcessTemplate;
+use Auth;
 
 class ProcessController extends AppBaseController
 {
@@ -43,7 +44,12 @@ class ProcessController extends AppBaseController
     public function create()
     {
         $users = User::pluck('name','id')->toarray();
-        $responsibles = User::pluck('name','id')->toarray();
+
+        $responsibles = User::whereHas(
+            'roles', function($q){
+                $q->whereIn('name', ['Admin','Responsable de producción']);
+            })->pluck('name','id')->toarray();
+
         $products = Product::all();
         $products = $products->keyBy('id');
         $process_templates = ProcessTemplate::all();
@@ -64,7 +70,7 @@ class ProcessController extends AppBaseController
         $input["inputs"] = json_encode($input["inputs"]);
         $input["outputs"] = json_encode($input["outputs"]);
         $input["metadata"] = json_encode($input["metadata"]);
-
+        $input["user"] = Auth::user()->id;
         $process = $this->processRepository->create($input);
         StockMovementController::manageProcess($process, 'store');
 
@@ -140,6 +146,7 @@ class ProcessController extends AppBaseController
         $input["inputs"] = json_encode($input["inputs"]);
         $input["outputs"] = json_encode($input["outputs"]);
         $input["metadata"] = json_encode($input["metadata"]);
+        $input["user"] = Auth::user()->id;
 
         $diff_json_status = $process->inputs != $input["inputs"] || $process->outputs != $input["outputs"] || $process->status != $input["status"];
 

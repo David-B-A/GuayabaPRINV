@@ -1,8 +1,8 @@
 <!-- User Field -->
-<div class="form-group col-sm-6">
+<!-- <div class="form-group col-sm-6">
     {!! Form::label('user', 'Usuario:') !!}
     {!! Form::select('user',[null => 'Seleccionar'] + $users, null, ['class' => 'form-control']) !!}
-</div>
+</div> -->
 
 <!-- Responsible Field -->
 <div class="form-group col-sm-6">

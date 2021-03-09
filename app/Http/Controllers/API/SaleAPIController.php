@@ -9,6 +9,7 @@ use App\Repositories\SaleRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Auth;
 
 /**
  * Class SaleController
@@ -55,6 +56,7 @@ class SaleAPIController extends AppBaseController
     {
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
+        $input["user"] = Auth::user()->id;
         $sale = $this->saleRepository->create($input);
 
         return $this->sendResponse($sale->toArray(), 'Sale saved successfully');
@@ -100,6 +102,7 @@ class SaleAPIController extends AppBaseController
             return $this->sendError('Sale not found');
         }
         $input["products"] = json_encode($input["products"]);
+        $input["user"] = Auth::user()->id;
         $sale = $this->saleRepository->update($input, $id);
 
         return $this->sendResponse($sale->toArray(), 'Sale updated successfully');

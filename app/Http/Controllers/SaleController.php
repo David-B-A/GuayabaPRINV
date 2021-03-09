@@ -12,6 +12,7 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 use App\Models\User;
 use App\Models\Product;
+use Auth;
 
 class SaleController extends AppBaseController
 {
@@ -42,7 +43,10 @@ class SaleController extends AppBaseController
     public function create()
     {
         $users = User::pluck('name','id')->toarray();
-        $customers = User::pluck('name','id')->toarray();
+        $customers = User::whereHas(
+            'roles', function($q){
+                $q->where('name', 'Cliente');
+            })->pluck('name','id')->toarray();
         $products = Product::all();
         $products = $products->keyBy('id');
         return view('sales.create', compact('users', 'customers', 'products'));
@@ -59,6 +63,7 @@ class SaleController extends AppBaseController
     {
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
+        $input["user"] = Auth::user()->id;
         $sale = $this->saleRepository->create($input);
         StockMovementController::manageSale($sale, 'store');
 
@@ -106,7 +111,10 @@ class SaleController extends AppBaseController
             return redirect(route('sales.index'));
         }
         $users = User::pluck('name','id')->toarray();
-        $customers = User::pluck('name','id')->toarray();
+        $customers = User::whereHas(
+            'roles', function($q){
+                $q->where('name', 'Cliente');
+            })->pluck('name','id')->toarray();
         $products = Product::all();
         $products = $products->keyBy('id');
         return view('sales.edit')->with(compact('sale','users', 'customers', 'products'));
@@ -131,6 +139,7 @@ class SaleController extends AppBaseController
         }
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
+        $input["user"] = Auth::user()->id;
 
         $diff_json_status = $sale->products != $input["products"] || $sale->status != $input["status"];
 

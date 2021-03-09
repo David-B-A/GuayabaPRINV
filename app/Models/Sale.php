@@ -68,7 +68,6 @@ class Sale extends Model
      * @var array
      */
     public static $rules = [
-        'user' => 'required',
         'customer' => 'required',
         'products' => 'required',
         'total' => 'required',

@@ -9,6 +9,7 @@ use App\Repositories\ProcessRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Auth;
 
 /**
  * Class ProcessController
@@ -57,6 +58,7 @@ class ProcessAPIController extends AppBaseController
         $input["inputs"] = json_encode($input["inputs"]);
         $input["outputs"] = json_encode($input["outputs"]);
         $input["metadata"] = json_encode($input["metadata"]);
+        $input["user"] = Auth::user()->id;
 
         $process = $this->processRepository->create($input);
 
@@ -98,6 +100,7 @@ class ProcessAPIController extends AppBaseController
         $input["inputs"] = json_encode($input["inputs"]);
         $input["outputs"] = json_encode($input["outputs"]);
         $input["metadata"] = json_encode($input["metadata"]);
+        $input["user"] = Auth::user()->id;
 
         /** @var Process $process */
         $process = $this->processRepository->find($id);

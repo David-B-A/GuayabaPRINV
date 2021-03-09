@@ -68,7 +68,6 @@ class Purchase extends Model
      * @var array
      */
     public static $rules = [
-        'user' => 'required',
         'supplier' => 'required',
         'products' => 'required',
         'total' => 'required',

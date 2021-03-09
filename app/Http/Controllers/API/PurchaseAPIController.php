@@ -9,6 +9,7 @@ use App\Repositories\PurchaseRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use Auth;
 
 /**
  * Class PurchaseController
@@ -55,6 +56,7 @@ class PurchaseAPIController extends AppBaseController
     {
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
+        $input["user"] = Auth::user()->id;
         $purchase = $this->purchaseRepository->create($input);
 
         return $this->sendResponse($purchase->toArray(), 'Purchase saved successfully');
@@ -100,6 +102,7 @@ class PurchaseAPIController extends AppBaseController
             return $this->sendError('Purchase not found');
         }
         $input["products"] = json_encode($input["products"]);
+        $input["user"] = Auth::user()->id;
 
         $purchase = $this->purchaseRepository->update($input, $id);
 

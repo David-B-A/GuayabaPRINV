@@ -29,7 +29,14 @@ class StockMovementDataTable extends DataTable
      */
     public function query(StockMovement $model)
     {
-        return $model->newQuery()->with('product_relation');
+        return $model->newQuery()->with(
+            'product_relation',
+            'sale_relation.customer_relation',
+            'purchase_relation.supplier_relation',
+            'process_relation.responsible_relation',
+            'sale_relation.user_relation',
+            'purchase_relation.user_relation',
+            'process_relation.user_relation');
     }
 
     /**
@@ -65,9 +72,15 @@ class StockMovementDataTable extends DataTable
     {
         return [
             'product' => new \Yajra\DataTables\Html\Column(['title' => 'Producto', 'data' => 'product_relation.name', 'name' => 'product_relation.name']),
-            'sale' => new \Yajra\DataTables\Html\Column(['title' => 'Venta', 'data' => 'sale', 'name' => 'sale']),
-            'purchase' => new \Yajra\DataTables\Html\Column(['title' => 'Compra', 'data' => 'purchase', 'name' => 'purchase']),
-            'process' => new \Yajra\DataTables\Html\Column(['title' => 'Proceso', 'data' => 'process', 'name' => 'process']),
+            'sale' => new \Yajra\DataTables\Html\Column(['title' => 'Venta', 'render' => 'function(){return this.sale_relation ? this.sale_relation.customer_relation.name : ""}', 'name' => 'sale']),
+            'purchase' => new \Yajra\DataTables\Html\Column(['title' => 'Compra', 'render' => 'function(){return this.purchase_relation ? this.purchase_relation.supplier_relation.name : ""}', 'name' => 'purchase']),
+            'process' => new \Yajra\DataTables\Html\Column(['title' => 'Proceso', 'render' => 'function(){return this.process_relation ? this.process_relation.responsible_relation.name : ""}', 'name' => 'process']),
+            'user' => new \Yajra\DataTables\Html\Column(['title' => 'Usuario', 'render' => 'function(){
+                    return  this.sale_relation ? this.sale_relation.user_relation.name : 
+                            this.purchase_relation ? this.purchase_relation.user_relation.name :
+                            this.process_relation ? this.process_relation.user_relation.name : "";
+                }', 'name' => 'user']),
+            'date' => new \Yajra\DataTables\Html\Column(['title' => 'Fecha', 'render' => 'function(){return (new Date(this.updated_at)).toLocaleDateString("es-CO")}', 'name' => 'date']),
             'ammount' => new \Yajra\DataTables\Html\Column(['title' => 'Cantidad', 'data' => 'ammount', 'name' => 'ammount']),
         ];
     }

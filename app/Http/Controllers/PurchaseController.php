@@ -12,6 +12,7 @@ use App\Http\Controllers\AppBaseController;
 use Response;
 use App\Models\User;
 use App\Models\Product;
+use Auth;
 
 class PurchaseController extends AppBaseController
 {
@@ -42,7 +43,10 @@ class PurchaseController extends AppBaseController
     public function create()
     {
         $users = User::pluck('name','id')->toarray();
-        $suppliers = User::pluck('name','id')->toarray();
+        $suppliers = User::whereHas(
+            'roles', function($q){
+                $q->where('name', 'Proveedor');
+            })->pluck('name','id')->toarray();
         $products = Product::all();
         $products = $products->keyBy('id');
         return view('purchases.create', compact('users', 'suppliers', 'products'));
@@ -59,6 +63,7 @@ class PurchaseController extends AppBaseController
     {
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
+        $input["user"] = Auth::user()->id;
         $purchase = $this->purchaseRepository->create($input);
         StockMovementController::managePurchase($purchase, 'store');
 
@@ -105,7 +110,10 @@ class PurchaseController extends AppBaseController
             return redirect(route('purchases.index'));
         }
         $users = User::pluck('name','id')->toarray();
-        $suppliers = User::pluck('name','id')->toarray();
+        $suppliers = User::whereHas(
+            'roles', function($q){
+                $q->where('name', 'Proveedor');
+            })->pluck('name','id')->toarray();
         $products = Product::all();
         $products = $products->keyBy('id');
         return view('purchases.edit')->with(compact('purchase','users', 'suppliers', 'products'));
@@ -130,6 +138,7 @@ class PurchaseController extends AppBaseController
         }
         $input = $request->all();
         $input["products"] = json_encode($input["products"]);
+        $input["user"] = Auth::user()->id;
 
         $diff_json_status = $purchase->products != $input["products"] || $purchase->status != $input["status"];
 

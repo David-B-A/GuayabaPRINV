@@ -71,7 +71,6 @@ class Process extends Model
      * @var array
      */
     public static $rules = [
-        'user' => 'required',
         'responsible' => 'required',
         'status' => 'required',
         'inputs' => 'required',
